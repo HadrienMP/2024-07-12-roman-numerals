@@ -3,9 +3,10 @@ import { hello } from "./hello"
 type roman = string
 type arabic = number
 
-const outOfRangeNumber = -1
+const lowerOutOfRangeNumber = -1
+const upperOutOfRangeNumber = 9
 describe("Roman numerals", () => {
-  it.each([outOfRangeNumber, 4, 9])(
+  it.each([lowerOutOfRangeNumber, 4, upperOutOfRangeNumber])(
     "throw an unexpected behaviour when it is not specified: %i",
     (arabic) => {
       expect(() => romanNumerals(arabic)).toThrow("Unspecified behaviour")
@@ -26,7 +27,7 @@ describe("Roman numerals", () => {
 })
 
 const romanNumerals = (arabic: arabic): roman => {
-  if (arabic < 0 || arabic === 4 || arabic > 8 || arabic === 9)
+  if (arabic < 0 || arabic === 4 || arabic >= upperOutOfRangeNumber)
     throw new Error("Unspecified behaviour")
 
   let roman = ""
