@@ -4,7 +4,7 @@ type roman = string
 type arabic = number
 
 const lowerOutOfRangeNumber = -1
-const upperOutOfRangeNumber = 10
+const upperOutOfRangeNumber = 14
 describe("Roman numerals", () => {
   it.each([lowerOutOfRangeNumber, upperOutOfRangeNumber])(
     "throw an unexpected behaviour when it is not specified: %i",
@@ -23,6 +23,10 @@ describe("Roman numerals", () => {
     { arabic: 6, roman: "VI" },
     { arabic: 7, roman: "VII" },
     { arabic: 8, roman: "VIII" },
+    { arabic: 10, roman: "X" },
+    { arabic: 11, roman: "XI" },
+    { arabic: 12, roman: "XII" },
+    { arabic: 13, roman: "XIII" },
   ])("$arabic => $roman", ({ arabic, roman }) => {
     expect(romanNumerals(arabic)).toEqual(roman)
   })
@@ -33,6 +37,10 @@ const romanNumerals = (arabic: arabic): roman => {
     throw new Error("Unspecified behaviour")
   if ([0, 4, 9].includes(arabic)) throw new Error("Not yet implemented")
   let roman = ""
+  if (arabic >= 10) {
+    roman = "X"
+    arabic -= 10
+  }
   if (arabic >= 5) {
     roman = "V"
     arabic -= 5
