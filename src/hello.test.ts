@@ -15,12 +15,14 @@ describe("Roman numerals", () => {
     { arabic: 1, roman: "I" },
     { arabic: 2, roman: "II" },
     { arabic: 3, roman: "III" },
+    { arabic: 5, roman: "V" },
   ])("$arabic => $roman", ({ arabic, roman }) => {
     expect(romanNumerals(arabic)).toEqual(roman)
   })
 })
 
 const romanNumerals = (arabic: arabic): roman => {
+  if (arabic === 5) return "V"
   if (arabic >= 0 && arabic < 4) {
     let roman = ""
     for (let i = 1; i <= arabic; i++) roman += "I"
