@@ -11,15 +11,16 @@ describe("Roman numerals", () => {
     )
   })
 
-  it.each([{ arabic: 1, roman: "I" }])(
-    "$arabic => $roman",
-    ({ arabic, roman }) => {
-      expect(romanNumerals(arabic)).toEqual(roman)
-    },
-  )
+  it.each([
+    { arabic: 1, roman: "I" },
+    { arabic: 2, roman: "II" },
+  ])("$arabic => $roman", ({ arabic, roman }) => {
+    expect(romanNumerals(arabic)).toEqual(roman)
+  })
 })
 
 const romanNumerals = (arabic: arabic): roman => {
   if (arabic === 1) return "I"
+  if (arabic === 2) return "II"
   throw new Error("Unspecified behaviour")
 }
