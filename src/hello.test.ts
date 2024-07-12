@@ -11,9 +11,12 @@ describe("Roman numerals", () => {
     )
   })
 
-  it("1 => 'I'", () => {
-    expect(romanNumerals(1)).toEqual("I")
-  })
+  it.each([{ arabic: 1, roman: "I" }])(
+    "$arabic => $roman",
+    ({ arabic, roman }) => {
+      expect(romanNumerals(arabic)).toEqual(roman)
+    },
+  )
 })
 
 const romanNumerals = (arabic: arabic): roman => {
