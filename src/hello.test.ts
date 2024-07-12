@@ -1,11 +1,10 @@
 import { hello } from "./hello"
 
-describe("hello", () => {
-  it("world", () => {
-    expect(hello()).toEqual("Hello world")
-  })
-
-  it("foo", () => {
-    expect(hello("foo")).toEqual("Hello foo")
+describe("Roman numerals", () => {
+  it("throw an unexpected behaviour when it is not specified", () => {
+    expect(() => romanNumerals(4000)).toThrow("Unspecified behaviour")
   })
 })
+function romanNumerals(arabic: number): any {
+  throw new Error("Unspecified behaviour")
+}
